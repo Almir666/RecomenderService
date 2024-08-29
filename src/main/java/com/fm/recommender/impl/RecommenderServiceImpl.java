@@ -9,7 +9,7 @@ import java.util.*;
 public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
 
     final Scorer<Movie, User> scorer = new ScorerImpl();
-    public List<Movie> listMovies;
+    private List<Movie> listMovies;
     @Override
     public List<Movie> getTop(User user, int limit) {
         Set<Movie> userCompilationMovies = new TreeSet<>(new Comparator<Movie>() {
@@ -32,7 +32,7 @@ public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
         if (listMovies.size() <= limit) {
             return listMovies;
         }
-        else return listMovies.subList(0,limit + 1);
+        else return listMovies;
     }
 
     @Override
