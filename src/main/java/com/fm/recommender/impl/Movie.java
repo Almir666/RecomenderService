@@ -1,5 +1,9 @@
 package com.fm.recommender.impl;
 
+import com.fm.recommender.Scorer;
+
+import java.util.Comparator;
+
 public class Movie {
     private final String id;
     private final String title;
@@ -12,7 +16,6 @@ public class Movie {
         this.snippet = snippet;
         this.embedding = embedding;
     }
-
 
     public String getId() {
         return id;
@@ -30,3 +33,4 @@ public class Movie {
         return snippet;
     }
 }
+
