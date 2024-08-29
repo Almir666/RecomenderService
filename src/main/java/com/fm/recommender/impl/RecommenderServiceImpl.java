@@ -5,8 +5,6 @@ import com.fm.recommender.Scorer;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
 
