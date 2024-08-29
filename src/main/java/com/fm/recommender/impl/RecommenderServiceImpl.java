@@ -4,6 +4,8 @@ import com.fm.recommender.RecommenderService;
 import com.fm.recommender.Scorer;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
@@ -12,7 +14,7 @@ public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
     private List<Movie> listMovies;
     @Override
     public List<Movie> getTop(User user, int limit) {
-        Set<Movie> userCompilationMovies = new TreeSet<>(new Comparator<Movie>() {
+        listMovies.stream().sorted(new Comparator<Movie>() {
             @Override
             public int compare(Movie o1, Movie o2) {
                 double scoreMovie1 = scorer.getScore(o1, user);
@@ -25,16 +27,9 @@ public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
                 }
                 else return 1;
             }
-        });
-        userCompilationMovies.addAll(listMovies);
-        listMovies.clear();
-        listMovies.addAll(userCompilationMovies);
-        if (listMovies.size() <= limit) {
-            return listMovies;
-        }
-        else return listMovies;
+        }).collect(Collectors.toList());
+        return listMovies;
     }
-
     @Override
     public void addMovie(Movie movie) {
         listMovies.add(movie);
