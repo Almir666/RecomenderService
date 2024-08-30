@@ -13,6 +13,7 @@ public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
     private List<Movie> listMovies = new ArrayList<>();
     @Override
     public List<Movie> getTop(User user, int limit) {
+        int currentListSize = listMovies.size();
              List<Movie> compileMoviesForUser = listMovies.stream().sorted(new Comparator<Movie>() {
                 @Override
                 public int compare(Movie o1, Movie o2) {
@@ -25,10 +26,10 @@ public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
                     } else return 1;
                 }
             }).collect(Collectors.toList());
-             if (listMovies.size() < limit) {
+             if (currentListSize < limit) {
                  return compileMoviesForUser;
              }
-            return compileMoviesForUser.subList(0, limit+1);
+            return compileMoviesForUser.subList(0, limit);
     }
 
     @Override
