@@ -4,35 +4,31 @@ import com.fm.recommender.RecommenderService;
 import com.fm.recommender.Scorer;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
 
     final Scorer<Movie, User> scorer = new ScorerImpl();
-    public List<Movie> listMovies;
+    private List<Movie> listMovies = new ArrayList<>();
     @Override
     public List<Movie> getTop(User user, int limit) {
-        Set<Movie> userCompilationMovies = new TreeSet<>(new Comparator<Movie>() {
-            @Override
-            public int compare(Movie o1, Movie o2) {
-                double scoreMovie1 = scorer.getScore(o1, user);
-                double scoreMovie2 = scorer.getScore(o2, user);
-                if (scoreMovie1 == scoreMovie2) {
-                    return 0;
+             List<Movie> compileMoviesForUser = listMovies.stream().sorted(new Comparator<Movie>() {
+                @Override
+                public int compare(Movie o1, Movie o2) {
+                    double scoreMovie1 = scorer.getScore(o1, user);
+                    double scoreMovie2 = scorer.getScore(o2, user);
+                    if (scoreMovie1 == scoreMovie2) {
+                        return 0;
+                    } else if (scoreMovie1 > scoreMovie2) {
+                        return -1;
+                    } else return 1;
                 }
-                else if (scoreMovie1 < scoreMovie2) {
-                    return -1;
-                }
-                else return 1;
-            }
-        });
-        userCompilationMovies.addAll(listMovies);
-        listMovies.clear();
-        listMovies.addAll(userCompilationMovies);
-        if (listMovies.size() <= limit) {
-            return listMovies;
-        }
-        else return listMovies.subList(0,limit + 1);
+            }).collect(Collectors.toList());
+             if (listMovies.size() < limit) {
+                 return compileMoviesForUser;
+             }
+            return compileMoviesForUser.subList(0, limit+1);
     }
 
     @Override
