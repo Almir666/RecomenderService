@@ -40,10 +40,11 @@ public class RecommenderServiceImplTest {
         );
         final Db db = new InMemDb();
         final Scorer<Movie, User> scorer = new ScorerImpl();
+        db.saveMovie(movie3);
+        db.saveMovie(movie2);
+        db.saveMovie(movie1);
+
         final RecommenderService<Movie, User> recomender = new RecommenderServiceImpl(scorer, db);
-        recomender.addMovie(movie3);
-        recomender.addMovie(movie2);
-        recomender.addMovie(movie1);
         List<Movie> actual = new ArrayList<>();
         actual.add(movie2);
         actual.add(movie3);
@@ -78,10 +79,11 @@ public class RecommenderServiceImplTest {
         );
         final Db db = new InMemDb();
         final Scorer<Movie, User> scorer = new ScorerImpl();
+        db.saveMovie(movie3);
+        db.saveMovie(movie2);
+        db.saveMovie(movie1);
+
         final RecommenderService<Movie, User> recomender = new RecommenderServiceImpl(scorer, db);
-        recomender.addMovie(movie3);
-        recomender.addMovie(movie2);
-        recomender.addMovie(movie1);
         List<Movie> actual = new ArrayList<>();
         actual.add(movie2);
         actual.add(movie3);
