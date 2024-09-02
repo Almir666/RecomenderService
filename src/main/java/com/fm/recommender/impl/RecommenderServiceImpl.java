@@ -8,11 +8,20 @@ import java.util.stream.Collectors;
 
 
 public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
+    private InMemDb db = new InMemDb();
     final Scorer<Movie, User> scorer = new ScorerImpl();
-    private List<Movie> listMovies = new ArrayList<>();
+    private static RecommenderServiceImpl instance;
+    private RecommenderServiceImpl(){}
+    public static RecommenderServiceImpl getInstance() {
+        if(instance == null) {
+            instance = new RecommenderServiceImpl();
+        }
+        return instance;
+    }
     @Override
     public List<Movie> getTop(User user, int limit) {
-        int currentListSize = listMovies.size();
+        List<Movie> listMovies = db.getAllMovies();
+        int currentListSize = db.getAllMovies().size();
         List<Movie> compileMoviesForUser = listMovies.stream().map(movie -> new CreatePair(movie,scorer.getScore(movie, user))).sorted(new Comparator<CreatePair>() {
             @Override
             public int compare(CreatePair o1, CreatePair o2) {
@@ -31,7 +40,7 @@ public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
     }
     @Override
     public void addMovie(Movie movie) {
-        listMovies.add(movie);
+        db.saveMovie(movie);
     }
 
     static class CreatePair {

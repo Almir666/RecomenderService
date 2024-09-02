@@ -36,7 +36,7 @@ public class RecommenderServiceImplTest {
                 "Almir",
                 new double[]{1., 2.}
         );
-        final RecommenderService<Movie, User> recomender = new RecommenderServiceImpl();
+        final RecommenderService recomender = RecommenderServiceImpl.getInstance();
         recomender.addMovie(movie3);
         recomender.addMovie(movie2);
         recomender.addMovie(movie1);
@@ -72,7 +72,7 @@ public class RecommenderServiceImplTest {
                 "Almir",
                 new double[]{1., 2.}
         );
-        final RecommenderService<Movie, User> recomender = new RecommenderServiceImpl();
+        final RecommenderService recomender = RecommenderServiceImpl.getInstance();
         recomender.addMovie(movie3);
         recomender.addMovie(movie2);
         recomender.addMovie(movie1);
