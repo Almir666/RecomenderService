@@ -1,6 +1,8 @@
 package com.fm.recommender.impl;
 
+import com.fm.recommender.Db;
 import com.fm.recommender.RecommenderService;
+import com.fm.recommender.Scorer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -36,11 +38,13 @@ public class RecommenderServiceImplTest {
                 "Almir",
                 new double[]{1., 2.}
         );
-        final RecommenderService recomender = RecommenderServiceImpl.getInstance();
+        final Db db = new InMemDb();
+        final Scorer<Movie, User> scorer = new ScorerImpl();
+        final RecommenderService<Movie, User> recomender = new RecommenderServiceImpl(scorer, db);
         recomender.addMovie(movie3);
         recomender.addMovie(movie2);
         recomender.addMovie(movie1);
-        List<Movie> actual = new ArrayList<Movie>();
+        List<Movie> actual = new ArrayList<>();
         actual.add(movie2);
         actual.add(movie3);
         actual.add(movie1);
@@ -72,11 +76,13 @@ public class RecommenderServiceImplTest {
                 "Almir",
                 new double[]{1., 2.}
         );
-        final RecommenderService recomender = RecommenderServiceImpl.getInstance();
+        final Db db = new InMemDb();
+        final Scorer<Movie, User> scorer = new ScorerImpl();
+        final RecommenderService<Movie, User> recomender = new RecommenderServiceImpl(scorer, db);
         recomender.addMovie(movie3);
         recomender.addMovie(movie2);
         recomender.addMovie(movie1);
-        List<Movie> actual = new ArrayList<Movie>();
+        List<Movie> actual = new ArrayList<>();
         actual.add(movie2);
         actual.add(movie3);
         List<Movie> expected = recomender.getTop(user, 2);
