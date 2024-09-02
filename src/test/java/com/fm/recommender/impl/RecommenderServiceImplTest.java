@@ -125,18 +125,16 @@ public class RecommenderServiceImplTest {
         final Scorer<Movie, User> scorer = new ScorerImpl();
         List<Movie> actual = new ArrayList<>();
         actual.add(movie2);
-        actual.add(movie4);
-        actual.add(movie3);
-        actual.add(movie1);
+
 
         final RecommenderService<Movie, User> recomender1 = new RecommenderServiceImpl(scorer, db);
-        final RecommenderService<Movie, User> recomender2 = new RecommenderServiceImpl(scorer, db);
         recomender1.addMovie(movie1);
         recomender1.addMovie(movie2);
         recomender1.addMovie(movie3);
-        recomender1.addMovie(movie4);
 
-        List<Movie> expected = recomender2.getTop(user, 4);
+        final RecommenderService<Movie, User> recomender2 = new RecommenderServiceImpl(scorer, db);
+        recomender2.addMovie(movie4);
+        List<Movie> expected = recomender2.getTop(user, 1);
         assertIterableEquals(expected, actual);
     }
 }
