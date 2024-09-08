@@ -1,4 +1,4 @@
-package com.fm.recommender.api;
+package com.fm.recommender;
 
 
 import org.springframework.boot.SpringApplication;
