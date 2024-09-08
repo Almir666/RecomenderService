@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ScorerImplTest {
+class ScorerImplTest {54r1 o9   `2f34xs
     @Test
     void testScorer() {
         Movie movie = new Movie(
