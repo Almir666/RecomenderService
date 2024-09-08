@@ -1,8 +1,8 @@
-package com.fm.recommender.impl;
+package com.fm.recommender.core.impl;
 
-import com.fm.recommender.Db;
-import com.fm.recommender.RecommenderService;
-import com.fm.recommender.Scorer;
+import com.fm.recommender.core.RecommenderService;
+import com.fm.recommender.core.Scorer;
+import com.fm.recommender.db.Db;
 
 import java.util.*;
 import java.util.stream.Collectors;

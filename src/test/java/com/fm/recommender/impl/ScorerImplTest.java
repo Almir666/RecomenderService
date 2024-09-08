@@ -1,6 +1,9 @@
 package com.fm.recommender.impl;
 
-import com.fm.recommender.Scorer;
+import com.fm.recommender.core.impl.Movie;
+import com.fm.recommender.core.Scorer;
+import com.fm.recommender.core.impl.ScorerImpl;
+import com.fm.recommender.core.impl.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

@@ -1,6 +1,6 @@
-package com.fm.recommender.impl;
+package com.fm.recommender.core.impl;
 
-import com.fm.recommender.Scorer;
+import com.fm.recommender.core.Scorer;
 
 public class ScorerImpl implements Scorer<Movie, User> {
     @Override

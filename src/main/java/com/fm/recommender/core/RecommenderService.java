@@ -1,4 +1,4 @@
-package com.fm.recommender;
+package com.fm.recommender.core;
 
 import java.util.List;
 

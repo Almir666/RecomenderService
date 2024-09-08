@@ -1,6 +1,6 @@
-package com.fm.recommender;
+package com.fm.recommender.db;
 
-import com.fm.recommender.impl.Movie;
+import com.fm.recommender.core.impl.Movie;
 
 import java.util.List;
 
