@@ -1,5 +1,9 @@
 package com.fm.recommender.impl;
 
+import com.fm.recommender.Scorer;
+
+import java.util.Comparator;
+
 public class Movie {
     private final String id;
     private final String title;
