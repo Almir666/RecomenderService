@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "movies")
-public class MovieInfo {
+public class TestMovie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -14,12 +14,12 @@ public class MovieInfo {
     @Column(name = "snippet")
     private String snippet;
     @Column(name = "embedding")
-    private double[] embedding;
+    private double embedding;
 
-    public MovieInfo() {
+    public TestMovie() {
     }
 
-    public MovieInfo(String id, String title, String snippet, double[] embedding) {
+    public TestMovie(String id, String title, String snippet, double embedding) {
         this.id = id;
         this.title = title;
         this.snippet = snippet;
@@ -50,11 +50,11 @@ public class MovieInfo {
         this.snippet = snippet;
     }
 
-    public double[] getEmbedding() {
+    public double getEmbedding() {
         return embedding;
     }
 
-    public void setEmbedding(double[] embedding) {
+    public void setEmbedding(double embedding) {
         this.embedding = embedding;
     }
 }
