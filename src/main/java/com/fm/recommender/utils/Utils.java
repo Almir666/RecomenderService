@@ -6,10 +6,10 @@ import com.fm.recommender.db.MovieInfo;
 
 public class Utils {
     public static Movie fromMovies(MovieInfo movieInfo) {
-        return new Movie(movieInfo.getId(), movieInfo.getTitle(), movieInfo.getSnippet(), movieInfo.getEmbedding());
+        return new Movie(String.valueOf(movieInfo.getId()), movieInfo.getTitle(), movieInfo.getSnippet(), movieInfo.getEmbedding());
     }
 
     public static MovieInfo toMovieInfo(Movie movie) {
-        return new MovieInfo(movie.getId(), movie.getTitle(), movie.getSnippet(), movie.getEmbedding());
+        return new MovieInfo(Integer.parseInt(movie.getId()), movie.getTitle(), movie.getSnippet(), movie.getEmbedding());
     }
 }

@@ -2,10 +2,9 @@ package com.fm.recommender.api;
 
 import com.fm.recommender.core.impl.Movie;
 import com.fm.recommender.core.impl.RecommenderServiceImpl;
+import com.fm.recommender.core.impl.ScorerImpl;
 import com.fm.recommender.core.impl.User;
-import com.fm.recommender.db.MovieInfo;
-import com.fm.recommender.db.TestDbRepository;
-import com.fm.recommender.db.TestMovie;
+import com.fm.recommender.db.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,16 +13,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class RecommenderServiceApi {
-    private RecommenderServiceImpl recommenderService;
-    // для тестирования подключения к бд
-    //-----------------------------------
     @Autowired
-    private TestDbRepository test;
-    @GetMapping("/recommender/test")
-    public List<TestMovie> testMethod() {
-        return test.getAllMovies();
-    }
-    //-----------------------------------
+    private Db dataBase;
+    @Autowired
+    private ScorerImpl scorer;
+    @Autowired
+    private RecommenderServiceImpl recommenderService = new RecommenderServiceImpl(scorer, dataBase);
+
 
     @GetMapping("/recommender/getTop/{limit}")
 
@@ -32,8 +28,8 @@ public class RecommenderServiceApi {
     }
 
     @PostMapping("recommender/addMovie")
-    public void addMovie(@RequestBody String id, String title, String snippet, double[] embedding) {
-        Movie newMovie = new Movie(id, title, snippet, embedding);
-        recommenderService.addMovie(newMovie);
+    public void addMovie(@RequestBody Movie movie) {
+        recommenderService.addMovie(movie);
     }
 }
+

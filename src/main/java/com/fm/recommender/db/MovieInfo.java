@@ -6,9 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "movies")
 public class MovieInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private String id;
+    private int id;
     @Column(name = "title")
     private String title;
     @Column(name = "snippet")
@@ -19,18 +18,18 @@ public class MovieInfo {
     public MovieInfo() {
     }
 
-    public MovieInfo(String id, String title, String snippet, double[] embedding) {
+    public MovieInfo(int id, String title, String snippet, double[] embedding) {
         this.id = id;
         this.title = title;
         this.snippet = snippet;
         this.embedding = embedding;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

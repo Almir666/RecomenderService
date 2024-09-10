@@ -1,7 +1,7 @@
 package com.fm.recommender.core.impl;
 
 public class Movie {
-    private final String id;
+    private String id;
     private final String title;
     private final String snippet;
     private final double [] embedding;
@@ -17,6 +17,9 @@ public class Movie {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getTitle() {
         return title;
     }

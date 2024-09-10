@@ -3,14 +3,15 @@ package com.fm.recommender.core.impl;
 import com.fm.recommender.core.RecommenderService;
 import com.fm.recommender.core.Scorer;
 import com.fm.recommender.db.Db;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-
+@Component
 public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
-    private final Scorer<Movie, User> scorer;
-    private final Db db;
+    private Scorer<Movie, User> scorer;
+    private Db db;
     private boolean initialized = false;
     private List<Movie> listMovies;
     void init() {

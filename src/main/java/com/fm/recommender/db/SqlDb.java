@@ -3,20 +3,30 @@ package com.fm.recommender.db;
 import com.fm.recommender.core.impl.Movie;
 import com.fm.recommender.utils.Utils;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SqlDb implements Db{
+
+@Repository
+@Transactional
+public class SqlDb implements Db {
+    @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public List<Movie> getAllMovies() {
         Query query = entityManager.createQuery("from MovieInfo ");
         List<MovieInfo> movieInfoList = query.getResultList();
         List<Movie> movieList = new ArrayList<>();
-
-        return null;
+        for(MovieInfo m: movieInfoList) {
+            movieList.add(Utils.fromMovies(m));
+        }
+        return movieList;
     }
 
     @Override

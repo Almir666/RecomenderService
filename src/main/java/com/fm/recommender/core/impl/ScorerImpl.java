@@ -1,7 +1,9 @@
 package com.fm.recommender.core.impl;
 
 import com.fm.recommender.core.Scorer;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ScorerImpl implements Scorer<Movie, User> {
     @Override
     public double getScore(Movie movie, User user) {
