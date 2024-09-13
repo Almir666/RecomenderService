@@ -1,6 +1,7 @@
 package com.fm.recommender.core.impl;
 
 import com.fm.recommender.core.Scorer;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component

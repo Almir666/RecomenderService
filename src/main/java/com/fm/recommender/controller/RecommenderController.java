@@ -6,6 +6,7 @@ import com.fm.recommender.core.impl.ScorerImpl;
 import com.fm.recommender.core.impl.User;
 import com.fm.recommender.db.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,9 +22,9 @@ public class RecommenderServiceApi {
     private RecommenderServiceImpl recommenderService = new RecommenderServiceImpl(scorer, dataBase);
 
 
-    @GetMapping("/recommender/getTop/{limit}")
+    @GetMapping("/recommender/getTop")
 
-    public List<Movie> getTop(@PathVariable int limit, @RequestBody User user) {
+    public List<Movie> getTop(@RequestParam int limit, @RequestBody User user) {
         return recommenderService.getTop(user, limit);
     }
 
