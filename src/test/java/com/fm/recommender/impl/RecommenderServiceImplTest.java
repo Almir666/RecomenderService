@@ -1,10 +1,10 @@
 package com.fm.recommender.impl;
 
-import com.fm.recommender.service.*;
-import com.fm.recommender.service.impl.Movie;
-import com.fm.recommender.service.impl.RecommenderServiceImpl;
-import com.fm.recommender.service.impl.ScorerImpl;
-import com.fm.recommender.service.impl.User;
+import com.fm.recommender.core.*;
+import com.fm.recommender.core.impl.Movie;
+import com.fm.recommender.core.impl.RecommenderServiceImpl;
+import com.fm.recommender.core.impl.ScorerImpl;
+import com.fm.recommender.core.impl.User;
 import com.fm.recommender.db.Db;
 import com.fm.recommender.db.InMemDb;
 import org.junit.jupiter.api.Test;

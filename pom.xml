@@ -19,7 +19,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            <java.version>17</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -51,14 +51,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.34</version>
-            <scope>provided</scope>
-        </dependency>
-
-
     </dependencies>
 
     <build>
@@ -71,16 +63,3 @@
     </build>
 
 </project>
-
-
-
-
-
-
-
-
-
-
-
-
-

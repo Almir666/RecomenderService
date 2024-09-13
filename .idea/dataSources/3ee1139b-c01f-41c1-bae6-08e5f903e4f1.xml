@@ -11,7 +11,7 @@
 13753||10|c|G
 13753||10|C|G
 13753||10|T|G</Grants>
-      <IntrospectionStateNumber>745</IntrospectionStateNumber>
+      <IntrospectionStateNumber>761</IntrospectionStateNumber>
       <ServerVersion>14.13</ServerVersion>
       <StartupTime>1725643868</StartupTime>
       <TimeZones>true ACDT
@@ -809,7 +809,7 @@ false Zulu
 13388||10|C|G
 13388||-9223372036854775808|U|G
 13388||10|U|G</Grants>
-      <IntrospectionStateNumber>745</IntrospectionStateNumber>
+      <IntrospectionStateNumber>761</IntrospectionStateNumber>
       <ObjectId>16395</ObjectId>
       <OwnerName>root</OwnerName>
     </database>
@@ -821,17 +821,17 @@ false Zulu
     <role id="4" parent="1" name="pg_database_owner">
       <ObjectId>6171</ObjectId>
     </role>
-    <role id="5" parent="1" name="pg_read_all_data">
-      <ObjectId>6181</ObjectId>
+    <role id="5" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
     </role>
-    <role id="6" parent="1" name="pg_write_all_data">
-      <ObjectId>6182</ObjectId>
-    </role>
-    <role id="7" parent="1" name="pg_monitor">
+    <role id="6" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
       <RoleGrants>3374
 3375
 3377</RoleGrants>
+    </role>
+    <role id="7" parent="1" name="pg_read_all_data">
+      <ObjectId>6181</ObjectId>
     </role>
     <role id="8" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
@@ -839,20 +839,20 @@ false Zulu
     <role id="9" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
     </role>
-    <role id="10" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
-    </role>
-    <role id="11" parent="1" name="pg_read_server_files">
+    <role id="10" parent="1" name="pg_read_server_files">
       <ObjectId>4569</ObjectId>
     </role>
-    <role id="12" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="13" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="14" parent="1" name="pg_signal_backend">
+    <role id="11" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
+    </role>
+    <role id="12" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+    </role>
+    <role id="13" parent="1" name="pg_write_all_data">
+      <ObjectId>6182</ObjectId>
+    </role>
+    <role id="14" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
     </role>
     <role id="15" parent="1" name="postgres">
       <BypassRls>1</BypassRls>
@@ -4248,8 +4248,8 @@ false Zulu
     <schema id="263" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>745</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-09-08.16:09:54</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>761</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-09-13.14:57:06</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>527</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -4264,7 +4264,7 @@ false Zulu
     </sequence>
     <table id="265" parent="263" name="movies">
       <ObjectId>16397</ObjectId>
-      <StateNumber>740</StateNumber>
+      <StateNumber>747</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>root</OwnerName>
     </table>
@@ -4290,10 +4290,10 @@ false Zulu
       <TypeId>1043</TypeId>
     </column>
     <column id="269" parent="265" name="embedding">
-      <DasType>double precision|0s</DasType>
-      <Position>5</Position>
-      <StateNumber>740</StateNumber>
-      <TypeId>701</TypeId>
+      <DasType>double precision[]|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>747</StateNumber>
+      <TypeId>1022</TypeId>
     </column>
     <index id="270" parent="265" name="movies_pkey">
       <ColNames>id</ColNames>

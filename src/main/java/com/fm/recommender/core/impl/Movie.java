@@ -1,4 +1,4 @@
-package com.fm.recommender.service.impl;
+package com.fm.recommender.core.impl;
 
 public class Movie {
     private String id;
