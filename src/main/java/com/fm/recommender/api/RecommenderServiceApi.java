@@ -1,11 +1,12 @@
 package com.fm.recommender.api;
 
+import com.fm.recommender.core.RecommenderService;
+import com.fm.recommender.core.Scorer;
 import com.fm.recommender.core.impl.Movie;
 import com.fm.recommender.core.impl.RecommenderServiceImpl;
 import com.fm.recommender.core.impl.ScorerImpl;
 import com.fm.recommender.core.impl.User;
 import com.fm.recommender.db.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +16,11 @@ import java.util.List;
 @Profile("dev")
 @RequestMapping("/api")
 public class RecommenderServiceApi {
-    @Autowired
-    private Db dataBase;
-    @Autowired
-    private ScorerImpl scorer;
-    @Autowired
-    private RecommenderServiceImpl recommenderService = new RecommenderServiceImpl(scorer, dataBase);
+    private final RecommenderService<Movie, User> recommenderService;
 
+    public RecommenderServiceApi(RecommenderService<Movie, User> recommenderService) {
+        this.recommenderService = recommenderService;
+    }
 
     @GetMapping("/recommender/getTop")
 

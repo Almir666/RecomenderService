@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 @Component
 @Profile("dev")
 public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
-    private Scorer<Movie, User> scorer;
-    private Db db;
+    private final Scorer<Movie, User> scorer;
+    private final Db db;
     private boolean initialized = false;
     private List<Movie> listMovies;
     void init() {

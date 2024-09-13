@@ -2,21 +2,23 @@ package com.fm.recommender.db;
 
 import com.fm.recommender.core.impl.Movie;
 import com.fm.recommender.utils.Utils;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
+import jakarta.persistence.*;
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 @Repository
 @Transactional
 @Profile("dev")
 public class SqlDb implements Db {
+
+//TODO: Явная инициализация базы данных
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -36,3 +38,4 @@ public class SqlDb implements Db {
         entityManager.merge(Utils.toMovieInfo(movie));
     }
 }
+
