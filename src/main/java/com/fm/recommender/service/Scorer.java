@@ -1,4 +1,4 @@
-package com.fm.recommender.core;
+package com.fm.recommender.service;
 
 public interface Scorer<Movie, User> {
     double getScore(Movie movie, User user);

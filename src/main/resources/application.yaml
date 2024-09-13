@@ -1,0 +1,18 @@
+#spring.application.name=scorer-mvn
+#server.servlet.context-path=/scorer
+#server.port=8080
+#
+#spring.datasource.url=jdbc:postgresql://localhost:5436/moviesScorerDb
+#spring.datasource.username=root
+#spring.datasource.password=123123
+#
+#spring.profiles.active=dev
+
+#server:
+#  port: 8081
+#
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5436/moviesScorerDb
+#    name: root
+#    password: 123123

@@ -1,4 +1,4 @@
-package com.fm.recommender.core.impl;
+package com.fm.recommender.service.impl;
 
 public class User {
     private final String id;

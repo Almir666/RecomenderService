@@ -1,36 +1,29 @@
-package com.fm.recommender.api;
+package com.fm.recommender.controller;
 
-import com.fm.recommender.core.impl.Movie;
-import com.fm.recommender.core.impl.RecommenderServiceImpl;
-import com.fm.recommender.core.impl.ScorerImpl;
-import com.fm.recommender.core.impl.User;
-import com.fm.recommender.db.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
+import com.fm.recommender.db.MovieInfo;
+import com.fm.recommender.service.RecommenderService;
+import com.fm.recommender.service.impl.Movie;
+import com.fm.recommender.service.impl.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-public class RecommenderServiceApi {
-    @Autowired
-    private Db dataBase;
-    @Autowired
-    private ScorerImpl scorer;
-    @Autowired
-    private RecommenderServiceImpl recommenderService = new RecommenderServiceImpl(scorer, dataBase);
+@RequiredArgsConstructor
+@RequestMapping("/api/recommender")
+public class RecommenderController {
 
+    private final RecommenderService recommenderService;
 
-    @GetMapping("/recommender/getTop")
-
-    public List<Movie> getTop(@RequestParam int limit, @RequestBody User user) {
+    @GetMapping("/getTop")
+    public List<MovieInfo> getTop(@RequestParam int limit, @RequestBody User user) {
         return recommenderService.getTop(user, limit);
     }
 
-    @PostMapping("recommender/addMovie")
-    public void addMovie(@RequestBody Movie movie) {
-        recommenderService.addMovie(movie);
-    }
+//    @PostMapping("/addMovie")
+//    public void addMovie(@RequestBody MovieInfo movie) {
+//        recommenderService.addMovie(movie);
+//    }
 }
 

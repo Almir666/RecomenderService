@@ -1,6 +1,6 @@
 package com.fm.recommender.utils;
 
-import com.fm.recommender.core.impl.Movie;
+import com.fm.recommender.service.impl.Movie;
 import com.fm.recommender.db.MovieInfo;
 
 
