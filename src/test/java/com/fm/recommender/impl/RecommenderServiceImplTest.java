@@ -8,6 +8,7 @@ import com.fm.recommender.core.impl.User;
 import com.fm.recommender.db.Db;
 import com.fm.recommender.db.InMemDb;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,8 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 public class RecommenderServiceImplTest {
+
+//    private RecommenderServiceImpl defaultRecommender; на потом
 
     @Test
     void testGetTopOverLimit() {
@@ -42,6 +45,7 @@ public class RecommenderServiceImplTest {
                 "Almir",
                 new double[]{1., 2.}
         );
+
         final Db db = new InMemDb();
         final Scorer<Movie, User> scorer = new ScorerImpl();
         db.saveMovie(movie3);

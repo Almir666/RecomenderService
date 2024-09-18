@@ -10,7 +10,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
-@Profile("dev")
 public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
     private final Scorer<Movie, User> scorer;
     private final Db db;
