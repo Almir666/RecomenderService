@@ -3,6 +3,8 @@ package com.fm.recommender.core.impl;
 import com.fm.recommender.core.RecommenderService;
 import com.fm.recommender.core.Scorer;
 import com.fm.recommender.db.Db;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
