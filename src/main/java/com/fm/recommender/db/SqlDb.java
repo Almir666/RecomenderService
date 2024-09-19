@@ -16,10 +16,6 @@ import java.util.List;
 public class SqlDb implements Db {
     @PersistenceContext
     private EntityManager entityManager;
-
-//    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.fm.recommender.db.MovieInfo");
-//    EntityManager entityManager = entityManagerFactory.createEntityManager();
-
     @Override
     public List<Movie> getAllMovies() {
         Query query = entityManager.createQuery("from MovieInfo");

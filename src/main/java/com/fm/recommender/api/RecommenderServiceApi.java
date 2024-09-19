@@ -3,11 +3,13 @@ package com.fm.recommender.api;
 import com.fm.recommender.core.RecommenderService;
 import com.fm.recommender.core.impl.Movie;
 import com.fm.recommender.core.impl.User;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Profile("dev")
 @RequestMapping("/api/recommender")
 public class RecommenderServiceApi {
     private final RecommenderService<Movie, User> recommenderService;

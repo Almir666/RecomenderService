@@ -9,6 +9,11 @@ import com.fm.recommender.db.Db;
 import com.fm.recommender.db.InMemDb;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +21,9 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
+@SpringBootTest
+@ActiveProfiles("test")
 public class RecommenderServiceImplTest {
-
-//    private RecommenderServiceImpl defaultRecommender; на потом
 
     @Test
     void testGetTopOverLimit() {
@@ -61,6 +66,7 @@ public class RecommenderServiceImplTest {
         assertIterableEquals(expected, actual);
     }
     @Test
+    @Profile("test")
     void testGetTopLessLimit() {
         Movie movie1 = new Movie(
                 UUID.randomUUID().toString(),
