@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Profile("dev")
 @RequestMapping("/api/recommender")
 public class RecommenderServiceApi {
     private final RecommenderService<Movie, User> recommenderService;
