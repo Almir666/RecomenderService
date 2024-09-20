@@ -58,7 +58,6 @@ public class RecommenderServiceImplTest {
         db.saveMovie(movie3);
         db.saveMovie(movie2);
         db.saveMovie(movie1);
-        System.out.println("Hello from Test");
         List<Movie> actual = new ArrayList<>();
         actual.add(movie2);
         actual.add(movie3);

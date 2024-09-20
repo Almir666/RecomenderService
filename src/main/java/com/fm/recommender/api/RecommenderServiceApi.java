@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Profile("test")
 @RestController
 @RequestMapping("/api/recommender")
 public class RecommenderServiceApi {
@@ -19,7 +18,6 @@ public class RecommenderServiceApi {
     }
 
     @GetMapping("/getTop")
-
     public List<Movie> getTop(@RequestParam int limit, @RequestBody User user) {
         return recommenderService.getTop(user, limit);
     }
