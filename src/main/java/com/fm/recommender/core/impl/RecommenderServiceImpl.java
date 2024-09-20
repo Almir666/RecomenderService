@@ -29,16 +29,13 @@ public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
         init();
         listMovies = db.getAllMovies();
         int currentListSize = listMovies.size();
-        List<Movie> compileMoviesForUser = listMovies.stream().map(movie -> new CreatePair(movie,scorer.getScore(movie, user))).sorted(new Comparator<CreatePair>() {
-            @Override
-            public int compare(CreatePair o1, CreatePair o2) {
-                if (o1.getScore() == o2.getScore()) {
-                    return 0;
-                } else if (o1.getScore() > o2.getScore()) {
-                    return -1;
-                } else return 1;
-            }
-        }).map(m -> m.getMovie()).collect(Collectors.toList());
+        List<Movie> compileMoviesForUser = listMovies.stream().map(movie -> new CreatePair(movie,scorer.getScore(movie, user))).sorted((o1, o2) -> {
+            if (o1.getScore() == o2.getScore()) {
+                return 0;
+            } else if (o1.getScore() > o2.getScore()) {
+                return -1;
+            } else return 1;
+        }).map(CreatePair::getMovie).collect(Collectors.toList());
 
         if (currentListSize < limit) {
             return compileMoviesForUser;
@@ -52,8 +49,8 @@ public class RecommenderServiceImpl implements RecommenderService<Movie, User> {
     }
 
     static class CreatePair {
-        private Movie movie;
-        private double score;
+        private final Movie movie;
+        private final double score;
         CreatePair(Movie movie, double score) {
             this.movie = movie;
             this.score = score;
